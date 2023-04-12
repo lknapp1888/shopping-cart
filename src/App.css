@@ -1,0 +1,66 @@
+* {
+    margin: 0
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: black solid 1px;
+}
+
+nav input {
+    height: 30px;
+    width: 50%;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    margin: 25px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.mainContainer {
+    border: 1px solid black;
+    min-height: 500px;
+}
+
+.shopContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px
+}
+
+.itemContainer {
+    border: black solid 1px;
+    height: 300px;
+    width: 200px;
+    padding: 20px;
+}
+
+img {
+    width: 200px;
+    height: 200px
+}
