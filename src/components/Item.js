@@ -5,7 +5,7 @@ const Item = function ({title, description, price, id, images}) {
 
     return (
         <div className="itemContainer">
-            <img src={images[0]}></img>
+            <img src={images[0]} className='itemImg'></img>
             <h3>{title}</h3>
             <p>£{price}</p>
             

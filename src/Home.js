@@ -5,7 +5,9 @@ const Home = function (props) {
 
     return (
         <div className="homeContainer">
-            Home container
+            <h2>Fake store</h2>
+            <div className="homeImg"></div>
+            <p>fake description</p>
         </div>
     )
 }
