@@ -13,17 +13,18 @@ const Shop = function (props) {
     const list = await fetch("https://api.escuelajs.co/api/v1/products");
     const itemList = await list.json();
     setItems(itemList);
-    console.log(itemList[4])
   };
   return (
     <div className="shopContainer">
       {items.map((item) => (
         <Item 
+        item={item}
         title={item.title} 
         description={item.description}
         price={item.price}
         key={item.id}
         images={item.images}
+        addToCart={props.addToCart}
         ></Item>
       ))}
     </div>
