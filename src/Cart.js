@@ -1,9 +1,21 @@
 import React from "react";
+import { useEffect, useState } from "react";
 
 const Cart = function (props) {
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    let totalPrice = 0;
+
+    for (let i = 0; i < props.cart.length; i ++) {
+      totalPrice += (props.cart[i].qty * props.cart[i].price)
+    }
+
+    setTotal(totalPrice)
+  })
   return (
     <div className="cartContainer">
-        <CartTable></CartTable>
+        <CartTable cart={props.cart} removeFromCart={props.removeFromCart}></CartTable>
       <div className="cartSummary">
         <h2>Summary</h2>
         <div className="discountContainer">
@@ -13,8 +25,8 @@ const Cart = function (props) {
                 <button>Apply</button>
             </div>
         </div>
-        <p>Subtotal: 00</p>
-        <p>Order total: 00</p>
+        <p>Subtotal: {total}</p>
+        <p>Order total: {total}</p>
         <button>Checkout</button>
       </div>
     </div>
@@ -24,6 +36,10 @@ const Cart = function (props) {
 export default Cart;
 
 const CartTable = function (props) {
+
+  const removeItem = function(e) {
+    props.removeFromCart(parseInt(e.target.id))
+  }
     return (
         <table className="cartTable">
   <thead>
@@ -35,93 +51,14 @@ const CartTable = function (props) {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>
-    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>    <tr>
-      <td>Product 1</td>
-      <td>$10.00</td>
-      <td>2</td>
-      <td>x</td>
-    </tr>
+{    props.cart.map((item) => (
+          <tr>
+          <td>{item.title}</td>
+          <td>{item.price * item.qty}</td>
+          <td>{item.qty}</td>
+          <td><button onClick={removeItem} id={item.id}>x</button></td>
+        </tr>
+    ))}
   </tbody>
 </table>
     )

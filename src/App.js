@@ -16,7 +16,15 @@ function App() {
     newCart.push({title, description, price, images, id, qty: 1})
     setCart(newCart)
     console.log(newCart)
+    // add qty feature for duplicates
   }
+
+  const removeFromCart = function (id) {
+    let newCart = cart;
+    newCart = newCart.filter(item => {return item.id !== id})
+    setCart(newCart)
+  }
+  
   return (
     <div className="App">
       <Nav></Nav>
@@ -24,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop addToCart={addToCart}/>} />
-          <Route path="/Cart" element={<Cart />} />
+          <Route path="/Cart" element={<Cart cart={cart} removeFromCart={removeFromCart}/>} />
         </Routes>
       </div>
       <footer></footer>
