@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import QtyInput from "./components/QtyInput";
 
 const Cart = function (props) {
   const [total, setTotal] = useState(0);
@@ -74,6 +75,7 @@ const CartRow = function ({ item, removeFromCart, updateQtyArr }) {
   };
 
   const updateQty = function (e) {
+    if (e.target.value.length > 2) {return}
     setqty(e.target.value);
     updateQtyArr(e.target.value, item.id);
   };
@@ -83,13 +85,7 @@ const CartRow = function ({ item, removeFromCart, updateQtyArr }) {
       <td>{item.title}</td>
       <td>{item.price * qty}</td>
       <td>
-        <input
-          type="number"
-          value={qty}
-          onChange={updateQty}
-          min="1"
-          max="99"
-        ></input>
+        <QtyInput qty={qty} updateQty={updateQty}></QtyInput>
       </td>
       <td>
         <button onClick={removeItem} id={item.id}>

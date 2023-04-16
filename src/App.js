@@ -10,12 +10,27 @@ import { useState } from "react";
 function App() {
   const [cart, setCart] = useState([]);
 
-  const addToCart = function ({ title, price, id, images, description }) {
+  const addToCart = function ({ title, price, id, images, description }, quantity) {
     let newCart = cart;
-    newCart.push({ title, description, price, images, id, qty: 1 });
+    let itemInCart = false;
+    newCart = newCart.map(item => {
+      if (item.id === id) {
+        if (item.qty + quantity > 99) {
+          item.qty = 99;
+                  itemInCart = true;
+        return item;
+        }
+
+        item.qty = item.qty + quantity
+        itemInCart = true;
+        return item;
+      }
+      return item;
+    })
+    if (!itemInCart) {
+      newCart.push({ title, description, price, images, id, qty: quantity });
+    }
     setCart(newCart);
-    console.log(newCart);
-    // add qty feature for duplicates
   };
 
   const removeFromCart = function (id) {
@@ -28,8 +43,6 @@ function App() {
 
   const updateQty = function (qty, id) {
     let newCart = cart;
-    console.log(qty)
-    console.log(id)
     newCart = newCart.map(item => {
       if (item.id === id) {
         item.qty = qty;
