@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/shopping-cart/static/css/main.339d2480.css",
+    "main.js": "/shopping-cart/static/js/main.f0c9749a.js",
+    "static/media/Inter-Regular.ttf": "/shopping-cart/static/media/Inter-Regular.e89cb19905e7db5591b0.ttf",
+    "static/media/Cinzel-VariableFont_wght.ttf": "/shopping-cart/static/media/Cinzel-VariableFont_wght.2d087b545bf495f3d86d.ttf",
+    "index.html": "/shopping-cart/index.html",
+    "main.339d2480.css.map": "/shopping-cart/static/css/main.339d2480.css.map",
+    "main.f0c9749a.js.map": "/shopping-cart/static/js/main.f0c9749a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.339d2480.css",
+    "static/js/main.f0c9749a.js"
+  ]
+}
