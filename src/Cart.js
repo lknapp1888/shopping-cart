@@ -30,8 +30,8 @@ const Cart = function (props) {
             <button>Apply</button>
           </div>
         </div>
-        <p>Subtotal: {total}</p>
-        <p>Order total: {total}</p>
+        <p>Subtotal: £{total}</p>
+        <p><b>Order total: £{total}</b></p>
         <button>Checkout</button>
       </div>
     </div>
@@ -45,25 +45,27 @@ const CartTable = function (props) {
     props.removeFromCart(parseInt(e.target.id));
   };
   return (
-    <table className="cartTable">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Remove</th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.cart.map((item) => (
-          <CartRow
-            item={item}
-            removeFromCart={props.removeFromCart}
-            updateQtyArr={props.updateQty}
-          ></CartRow>
-        ))}
-      </tbody>
-    </table>
+    <div className="cartTableContainer">
+      <table className="cartTable">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.cart.map((item) => (
+            <CartRow
+              item={item}
+              removeFromCart={props.removeFromCart}
+              updateQtyArr={props.updateQty}
+            ></CartRow>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
@@ -83,7 +85,7 @@ const CartRow = function ({ item, removeFromCart, updateQtyArr }) {
   return (
     <tr>
       <td>{item.title}</td>
-      <td>{item.price * qty}</td>
+      <td>£{item.price * qty}</td>
       <td>
         <QtyInput qty={qty} updateQty={updateQty}></QtyInput>
       </td>

@@ -1,11 +1,30 @@
 * {
-    margin: 0
+    margin: 0;
+
+  --backgroundColor: #ffffff;
+  --mainColor: #ddd;
+  --secondaryColor: #082f49;
+  --positiveBtnColor: #15803d;
+  font-family: MyFont;
 }
 
-.App {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+body {
+  background-color: var(--backgroundColor);
+}
+
+@font-face {
+  font-family: "MyFont";
+  src: url("Inter-Regular.ttf") format("openType");
+  font-style: normal;
 }
 
 ul {
@@ -22,34 +41,52 @@ input {
 
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    border: black solid 1px;
+    background-color: var(--secondaryColor);
 }
 
-nav input {
-    height: 30px;
-    width: 50%;
+nav ul {
+  display: flex;
+  width: clamp(245px, 75%, 900px);
+  justify-content: space-around;
 }
 
-ul {
-    display: flex;
-}
 
-li {
-    margin: 25px;
-    font-size: 2rem;
+nav li {
+    margin: 25px 0px 25px 0px;
     font-weight: bold;
+
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
 }
 
-a {
+nav li:hover,
+nav li:focus,
+nav li:active {
+  transform: scale(1.24);
+}
+
+nav a {
     text-decoration: none;
-    color: black;
+    color: white;
+    font-size: 3rem;
 }
 
 .mainContainer {
-    border: 1px solid black;
-    min-height: 500px;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.mainSubContainer {
+    max-width: 1400px;
 }
 
 .shopContainer {
@@ -57,7 +94,7 @@ a {
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px
+    gap: 20px;
 }
 
 .itemContainer {
@@ -65,11 +102,26 @@ a {
     height: 300px;
     width: 200px;
     padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.itemInputContainer {
+    display: flex;
+    gap: 5px
+}
+
+.itemInputContainer input  {
+  width: 36px;
 }
 
 .itemImg {
     width: 200px;
-    height: 200px
+    height: 200px;
+    border-radius: 10px;
 }
 
 .homeContainer {
@@ -79,15 +131,14 @@ a {
     gap: 20px;
 }
 
-.homeImg {
-    border: solid black 1px;
-    width: 75%;
-    height: 350px;
+.homeContainer p {
+  font-size: 1.5rem;
 }
 
 .cartContainer {
     display: flex;
     justify-content: center;
+    gap: 25px;
 }
 
 .cartTable {
@@ -95,20 +146,20 @@ a {
     width: 100%;
     max-width: 800px;
   }
-  
+
   .cartTable th,
   .cartTable td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
-  
+
   .cartTable th {
     background-color: #f2f2f2;
     font-weight: bold;
     font-size: 18px;
   }
-  
+
   .cartTable tbody tr:nth-child(even) {
     background-color: #f9f9f9;
   }
@@ -120,16 +171,15 @@ a {
     padding: 20px;
     border-radius: 5px;
     height: fit-content;
-    width: 300px;
     display: flex;
     flex-direction: column;
     gap: 10px
   }
-  
+
   .cartSummary .discountContainer input[type="text"] {
     width: 200px;
   }
-  
+
   .cartSummary .discountContainer button, .cartSummary button {
     background-color: #4CAF50;
     color: white;
@@ -147,9 +197,69 @@ a {
     margin-bottom: 5px;
   }
 
+  .discountContainer div {
+    display: flex;
+    gap: 10px;
+  }
+
   .cartSummary button {
     padding: 12px 24px;
     font-size: 18px;
   }
 
+  @media (max-width: 600px) {
+    nav {
+      height: 10vh;
+    }
+
+    nav a {
+      font-size: 1.5rem;
+    }
+
+    .mainContainer {
+      margin: 0px;
+    }
+
+    .itemContainer {
+      border: black solid 1px;
+      width: 40%;
+      height: 280px;
+      padding: 10px;
+      border-radius: 10px;
+  }
   
+  .itemInputContainer {
+      gap: 5px
+  }
+  
+  .itemInputContainer input  {
+    width: 36px;
+  }
+  
+  .itemImg {
+      width: 100%;
+      height: 140px;
+      border-radius: 10px;
+  }
+
+  .cartContainer {
+    flex-direction: column;
+    gap: 0px;
+}
+
+
+.cartTableContainer {
+  max-height: 70%;
+  /* width: 100%; */
+  overflow: auto;
+}
+
+.cartSummary {
+  height: 30%;
+}
+
+.homeContainer {
+  margin: 16px;
+}
+  
+  }

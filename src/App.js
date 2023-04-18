@@ -55,24 +55,25 @@ function App() {
 
   return (
     <div className="App">
-      <Nav></Nav>
+      <Nav cartAmount={cart.length}></Nav>
       <div className="mainContainer">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop addToCart={addToCart} />} />
-          <Route
-            path="/Cart"
-            element={
-              <Cart
-                cart={cart}
-                removeFromCart={removeFromCart}
-                updateQty={updateQty}
-              />
-            }
-          />
-        </Routes>
+        <div className="mainSubContainer">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/shop" element={<Shop addToCart={addToCart} />} />
+            <Route
+              path="/Cart"
+              element={
+                <Cart
+                  cart={cart}
+                  removeFromCart={removeFromCart}
+                  updateQty={updateQty}
+                />
+              }
+            />
+          </Routes>
+        </div>
       </div>
-      <footer></footer>
     </div>
   );
 }

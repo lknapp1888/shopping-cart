@@ -18,8 +18,10 @@ const Item = function ({title, description, price, id, images, addToCart, item})
             <img src={images[0]} className='itemImg'></img>
             <h3>{title}</h3>
             <p>£{price}</p>  
-           <button onClick={addItemToCart}>Add to cart</button>
-           <QtyInput qty={qty} updateQty={updateQty}></QtyInput>
+           <div className="itemInputContainer">
+               <button onClick={addItemToCart}>Add to cart</button>
+               <QtyInput qty={qty} updateQty={updateQty}></QtyInput>
+           </div>
         </div>
     )
 }
