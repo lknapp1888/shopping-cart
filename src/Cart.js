@@ -49,7 +49,7 @@ const CartTable = function (props) {
       <table className="cartTable">
         <thead>
           <tr>
-            <th>Title</th>
+            <th>Product</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Remove</th>
