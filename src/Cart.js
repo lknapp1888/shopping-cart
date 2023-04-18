@@ -78,8 +78,9 @@ const CartRow = function ({ item, removeFromCart, updateQtyArr }) {
 
   const updateQty = function (e) {
     if (e.target.value.length > 2) {return}
-    setqty(e.target.value);
     updateQtyArr(e.target.value, item.id);
+    setqty(e.target.value);
+
   };
 
   return (
@@ -87,7 +88,7 @@ const CartRow = function ({ item, removeFromCart, updateQtyArr }) {
       <td>{item.title}</td>
       <td>£{item.price * qty}</td>
       <td>
-        <QtyInput qty={qty} updateQty={updateQty}></QtyInput>
+        <QtyInput qty={item.qty} updateQty={updateQty}></QtyInput>
       </td>
       <td>
         <button onClick={removeItem} id={item.id}>
