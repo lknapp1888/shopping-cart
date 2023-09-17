@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import QtyInput from "./components/QtyInput";
 
 const Cart = function (props) {
-  const [total, setTotal] = useState(0);
-
-  useEffect(() => {
+  const getTotal = () => {
     let totalPrice = 0;
 
     for (let i = 0; i < props.cart.length; i++) {
       totalPrice += props.cart[i].qty * props.cart[i].price;
     }
+    return totalPrice;
+  };
+  
+  const total = getTotal();
 
-    setTotal(totalPrice);
-  });
   return (
     <div className="cartContainer">
       <CartTable
@@ -31,7 +31,9 @@ const Cart = function (props) {
           </div>
         </div>
         <p>Subtotal: £{total}</p>
-        <p><b>Order total: £{total}</b></p>
+        <p>
+          <b>Order total: £{total}</b>
+        </p>
         <button>Checkout</button>
       </div>
     </div>
@@ -77,10 +79,11 @@ const CartRow = function ({ item, removeFromCart, updateQtyArr }) {
   };
 
   const updateQty = function (e) {
-    if (e.target.value.length > 2) {return}
+    if (e.target.value.length > 2) {
+      return;
+    }
     updateQtyArr(e.target.value, item.id);
     setqty(e.target.value);
-
   };
 
   return (
